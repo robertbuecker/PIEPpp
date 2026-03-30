@@ -1,0 +1,173 @@
+   9. Alphabetic listing of commands (default representation)
+  Upper case or lower case, not mixed within one command
+# : obsolete commands of minor use
+
+ A  : cell parameter a, < 0 : reciprocal
+ AB : calculate goniometer angles alpha and beta
+ AD : delete SAD data from memory A
+ AG : get SAD data from memory A
+ AI : invert all "exclude"-marks in memory A
+ AL : cell parameter alpha, < 0 : reciprocal
+ AN : angle between R1 and R2
+ AP : put SAD data into memory A
+ AW : display (write) memory A
+ AX : mark an SAD data set in memory A as being excluded (or include again) 
+ B  : cell parameter b, < 0 : reciprocal
+ BD : delete cell data from B memory
+ BE : cell parameter beta, < 0 : reciprocal
+ BG : get cell data from B memory
+ BP : put cell parameters into B memory
+ BR : break condition for S1, SA, DC
+ BS : save cell parameters from B memory on file
+ BW : display (write) B-memory
+ C  : cell parameter c, < 0 : reciprocal
+ C0 : calculate radius of Laue zone 0 from tilting angle of zone axis
+ CC : camera constant or camera length
+ CD : calculations in direct space, xyz input
+ CG : get cell parameters from C-memory
+ CN : centering
+ CM : comprehensiveness of output on protocol file 2 (1)
+ CP : cell parameters, a < 0 : reciprocal; = 0 : assignment of an input file
+ CR : calculations in reciprocal space, hkl input
+ CW : display (write) sorted cell parameter list from C-memory
+ CZ : find closest zone 
+#D0 : error (delta) for L0
+#D1 : error (delta) for L1
+ DC : determine cell parameters
+ DE : Delaunay reduction
+ DS : replace SAD sigma’s (r, angle, camera const.) by default sigma’s
+ E1 : error for R1
+ E2 : error for R2
+ E3 : error for R3
+ EA : error for AN
+ EC : error for CC
+ EN, EX, QU : end,  exit, quit, all equivalent
+ EQ : limits for equivalence in DC
+#EV : error for volume if VY is active (relevant for I , SC)
+ EX, EN, QU : exit,  end,  quit, all equivalent
+ GA : cell parameter gamma, < 0 : reciprocal
+ GC : calculate angles between orientations from goniometer settings
+          of SAD-patterns from memory A
+ GR : (read) goniometer angles for a SAD-pattern
+ GS : definition of goniometer type, angle between goniometer settings
+ GU: goniom. angles, upper limits for beta, alpha and |u|, |v|, |w| given
+ H  : help
+ HD : hexadecimal to decimal
+ HH : help for a specified topic
+ HV : high voltage or lambda
+ I  : index a pattern
+ IR : interchange R1 and R2
+ IS :  idealize symmetry 
+ JE :  measuring function for JEOL
+ JH :  measuring function for JEOL, hexadecimal
+ L  : list of current cell parameters and SAED data
+ L0 : radius Laue zone 0
+ L1 : difference of  radii  ( Laue zone 1   Laue zone 0 )
+ LA : list content of memory A (d-values and angles only)
+ LD : load calculated SAED data
+ LG : get lattice constants from file
+#LN : Laue zone criterion applied: no (default)
+ LW : display (write) permanent lattice constant file
+#LY : Laue zone criterion applied: yes
+	MU : maximum multiplicity of primitive mesh
+	MV : matrix- and vector operations (see appendix)
+	NC : new calibration factors for deflection currents 
+ ND : new default sigmas for r, angle, camera const.
+ NL : number of lines per screen
+ NP : new pattern
+ NR : maximum number of best solutions to be output
+ OD : output: d values
+ OR : output: radii (as measured, default)
+ OZ : input orientation determining zone
+ PC : prepare cell parameter determination
+ PG : get SAD pattern from file
+ PO : parallel output on protocol file (toggle on/off)
+ PS : save SAD pattern on file
+ QU, EX, EN : quit,  exit,  end, all equivalent
+ R1 : 1st radius
+ R2 : 2nd radius
+ R3 : 3rd radius (= length of vector (R1 R2))
+ RD : restore default conditions (modi and data)
+ (RF : refine cell parameters (not yet implemented))
+ RL : rigid limits for R1, R2, CC: 0 = yes(def.), 1 = no
+ RN : self acting rewind before S1 and SA: no
+ RO : rotate r1, r2, r3: r3?r1, r2?r3, r1?r2  (RPN)
+ RW : rewind cell parameter file
+ RY : self acting rewind before S1 and SA: yes (default)
+ S1 : scan through cell parameter file, use 1 pattern (work area)
+ SA : scan using data from A memory
+ SC : scan through cell parameter file (output as "I ", halt at each match)
+ SD : scan through C-memory, perform Delaunay reduction for each entry
+ SF : save results of "I " on protocol file
+ SS : estimate cell parameters from a single SAD pattern
+          or from two patterns containing a common vector 
+ SW : display (write) SAD data file
+ TE : temporary errors for SAD data during cell parameter determination
+ TI : title of SAD pattern
+ UN : reduce ('unify') an SAD pattern (minimize r1, r2, r3)
+ V  : show conditions (view)
+#VN : volume criterion applied: no (default)
+#VY : volume criterion applied: yes
+ WT : weights for R-value
+ XW : (X-ray) wavelength for calculation of powder diagrams
+ YX : parameters for graphics (scale, ratio y/x)
+ ZA : zone axes (h1 x h2) output, on/off
+
+Appendix 1: Subset of commands for MV (matrix- and vector operations)
+Numeric input in  conventional free format for FORTRAN
+ EN, EX, QU : quit MV (return to prompt ‘*’)
+ H  : help
+ I1 : invert matrix 1
+ I2 : invert matrix 2
+ L  : list current cell parameters, matrices, and vectors
+ M1 : read matrix 1
+ M2 : read matrix 2
+ MA : apply matrix 1 to current cell parameters
+ MI : interchange matrix 1 and matrix 2
+ MM : matrix 1 * matrix 2
+ MR : reset matrix 1 to 1
+ MV : matrix * vector
+ V  : read vector
+ VM : vector * matrix
+ VS : vector * vector (scalar)
+ VV : vector * vector (vector)
+
+ 
+Appendix 2:  commands for the RPN calculator
+ .  : enter to register 1 (x), scroll enabled 
+ .. : shift stack, keep register 1 (register 4 is lost) 
+ .1 : enter to reg. 1  (x) (override) 
+ .2 : enter to reg. 2  (y) (override) 
+ .3 : enter to reg. 3 (override) 
+ .4 : enter to reg. 4 (override) 
+ .M : enter to memory reg. (override)
+ <  : roll stack left (down)
+ >  : roll stack right (up)
+ <> : interchange register 1 and 2 (x and y)
+ +  : +    (y + x)   (reg.2 + reg.1) 
+ -  : -    (y – x)    (reg.2 – reg.1) 
+ *  : *   (y • x)      (reg.2 • reg.1) 
+ / (also : ) :  /   (y / x)      (reg.2 / reg.1)
+ ** : **    y**x  (reg.2 ** reg.1)
+ !  : use content of RPN-register 1 as input value 
+ !1 : use content of RPN-register 1 as input value (same as !  )
+ !2 : use content of RPN-register 2 as input value
+ !3 : use content of RPN-register 3 as input value
+ !4 : use content of RPN-register 4 as input value
+ !M : use content of RPN-memory as input value
+ AC : acos
+ AS : asin 
+ AT : atan
+ CO : cos 
+ CS : change sign 
+ E* : exp   e**x   (ex )
+ LO : ln, (logarithm, base e)
+ LX : last x (RPN)
+ MP : put content of reg.1 to memory (RPN)
+ MG : get content of memory (put to reg.1) (RPN)
+ RE : 1/x  (reciprocal) (RPN)
+ RT : square root (RPN)
+ SI : sin (RPN)
+ SQ : x2  (square)  (RPN)
+ TG : tangens (RPN)
+

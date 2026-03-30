@@ -1,0 +1,455 @@
+  001           2
+c  main program                                                         
+------------------------------------------------------------------
+  002         190
+      block data                                                        
+------------------------------------------------------------------
+  003         484
+      subroutine opn (iun,ifil,ie,its)                                  
+c open and close files                                                  
+------------------------------------------------------------------
+  004         549
+      entry clos(iun)                                                   
+c close file iun                                                        
+------------------------------------------------------------------
+  005         564
+      subroutine edit (iun,lx,ibr)                                      
+c output current data (work area)                                       
+------------------------------------------------------------------
+  006         698
+      subroutine atoh (n)                                               
+c work area > A-memory                                                  
+------------------------------------------------------------------
+  007         725
+      entry htoa(n)                                                     
+c A-memory > work area                                                  
+------------------------------------------------------------------
+  008         736
+      subroutine ltoh (jsm,ila,rs,in,ioa,text,ta1,dg,dgw)               
+c cell parameters > B-memory                                            
+------------------------------------------------------------------
+  009         797
+      subroutine htol (dg,dgw,jsm,ila,rs,in,io,ioa,text,ta1)            
+c cell parameters B-memory > work area 
+------------------------------------------------------------------
+  010         849
+      subroutine dlgk (jsm,in,ioa,ibr,jfw)                              
+c deletes cell parameters from B-memory                                 
+------------------------------------------------------------------
+  011         933
+      subroutine htof (jsm,in,ioa,isl,if4,nsc,file)                     
+c cell parameters from B-memory to file                                 
+------------------------------------------------------------------
+  012        1031
+      subroutine clt (text)                                             
+c  clear text                                                           
+------------------------------------------------------------------
+  013        1040
+      subroutine pos (n3,ipos,nrr,j)                                    
+c controls SAD-file                                                     
+------------------------------------------------------------------
+  014        1058
+      function ra (r0,c,i,a,v)                                          
+c L.z.1 - L.z.0                                                         
+------------------------------------------------------------------
+  015        1067
+      integer function mbr(ke,ila)                                      
+c admissibility of centering                                            
+------------------------------------------------------------------
+  016        1081
+      subroutine resto (isr,ihv)                                        
+c calculates additional values from restored parameters                 
+------------------------------------------------------------------
+  017        1135
+      subroutine prep1                                                  
+c additional quantities for SAD data from file                          
+------------------------------------------------------------------
+  018        1171
+      function jhv (hv)                                                 
+c high tension in kV                                                    
+------------------------------------------------------------------
+  019        1178
+      subroutine les (in)                                               
+c subr. for interpretation of free format and check in col.1            
+------------------------------------------------------------------
+  020        1309
+      subroutine delc (ngkk,rs,rs0,ier,isy,id33,idid)                   
+c Delaunay reduction, scan through mem. C                               
+------------------------------------------------------------------
+  021        1388
+      subroutine indi (dg,cr,nda,idi,ie)                                
+c loops for indexing                                                    
+------------------------------------------------------------------
+  022        1542
+      subroutine eva (cd,ild,ibr,iun,isr,isr0,ier,nls,m,i4,nda,il1,flim)
+c evaluate and store indexing                                           
+------------------------------------------------------------------
+  023        1673
+      subroutine outp (i7,jz,m,sfom,ild,ier,iwr,i4,i5,iwi,iun,nli,iza,  
+     1ns,m0,isr0,ibr,nexc)                                              
+c  sorted output of solutions                                                                        
+------------------------------------------------------------------
+  024        1950
+      subroutine ckout (ke,i4,jz,ih1,ih2,iee,ila,m)                     
+c check for equivalence of indexings (1)                                
+------------------------------------------------------------------
+  025        1966
+      subroutine ck3 (ke,i1,i2,i3,j1,j2,j3,ie,ila,n)                    
+c check for equivalence of indexings (2)                                
+------------------------------------------------------------------
+  026        2049
+      subroutine rpl (ioa,jk,rmi,rma,wi,yzx,fakr,ak1,akl,a,rz0,rz1,dhd1,
+     1w13,ny,nz)                                                        
+c graphic representation of a zone                                      
+------------------------------------------------------------------
+  027        2167
+      subroutine rlgen2 (kk,mm,vv,dd,rrgg,fakr,dgd,dgdw,ie,rg5,xx12,    
+     1xx22)                                                             
+c cell parameter determination for <SS>                                 
+------------------------------------------------------------------
+  028        2193
+      subroutine ck (ngkk,fom,ssfom,swt,ie,ddifw,ddazb,nsub,ddx,ddy,ddz,
+     1sfmx,fkk)                                                         
+c controls solutions from <DC>                                          
+------------------------------------------------------------------
+  029        2285
+      subroutine vlim (in,io,ioa,vmin,vmax,vminp,vmaxp,vmi,vma,sv,ie)   
+c minimum and maximum volume for <DC> and <SA>                          
+------------------------------------------------------------------
+  030        2318
+      subroutine del (dg,dgw,ddw,ddv,ila,ntr,ntr0,rs,r0,isx,nrt,id33,iu)
+c Delaunay reduction                                                    
+------------------------------------------------------------------
+  031        2810
+      function npl (x33,ie,ioa,nx1,ny1)                                 
+c number of c*-vektors within a plane (LD)                                  
+------------------------------------------------------------------
+  032        2847
+      subroutine ldini (a,b,ga,vmi,vma,io,ioa,in,iii,ipabs,mul3,ilim,   
+     1ibr,iret)                                                         
+c   determines a*, b*, gamma* and additional param. for <DC>            
+------------------------------------------------------------------
+  033        3037
+      subroutine cksg (io,ioa,in,sv,vmi,vma,iii,ll,ilim,ibr,iall)       
+c determines sequence etc. in A-mem. for <DC> and <SA>                  
+------------------------------------------------------------------
+  034        3373
+      subroutine rlgen (ie,nrlc,ipabs,ngkk,nall,dx,dy,dz,ittest)        
+c generates cell parameters for <DC>                                    
+------------------------------------------------------------------
+  035        3472
+      subroutine rlg (aa,bb,del,xjx,xjy,i05,nci,n1,dx,dy,nci0,ittest)   
+c generates xjx(=x1=x*) and xjy(=x2=y*)                                       
+------------------------------------------------------------------
+  036        3606
+      logical function amea(a,b)                                        
+c checks condition a=b                                                  
+------------------------------------------------------------------
+  037        3613
+      subroutine srt (kim,ngkk,imx,v,val1,valk)                         
+c sorting by integral or V                                              
+------------------------------------------------------------------
+  038        3641
+      function htod (b)                                                 
+c hexadec. integers >0 -> decimal                                       
+------------------------------------------------------------------
+  039        3683
+      subroutine hex (in,ioa,ajex,ajey,ak)                              
+c SAD data from hexadec. readouts (prtest m2)                           
+------------------------------------------------------------------
+  040        3761
+      subroutine rfo (rf,dew2,dec5,fak,c,i)                             
+c forms additional quantities for temporary errors                      
+------------------------------------------------------------------
+  041        3792
+      subroutine hexrh (iz)                                             
+c prepares check for trig.R, u+v=3n, w=3n                               
+------------------------------------------------------------------
+  042        3809
+      subroutine such (ittest)                                          
+c  master program                                                       
+------------------------------------------------------------------
+  043        6749
+      function rr33 (r1,r2,fak,wi)                                      
+c  r3 aus r1,r2,wi (Cosinussatz)                                        
+------------------------------------------------------------------
+  044        6755
+      subroutine zo (ie,ihot,fakr,cd,dg,dgw,rs,rs0,dg0,dgw0,rs00,rs000, 
+     1ila0,ihon,jsm)                                                    
+c set up goniometer settings for reference zones                        
+------------------------------------------------------------------
+  045        6950
+      subroutine uvwgen (cd,fakr,dg,dgw,rs,ihoz,dg0,dgw0,rs00,ila0,j9,  
+     1jsm,ie,ihon)                                                      
+c  determines all zones accessible up to max. alpha, beta, u, v, w      
+------------------------------------------------------------------
+  046        7067
+      subroutine ab1 (cd,fakr,dg,dgw,rs,ihot,dg0,dgw0,rs00,ila0,j9,jsm, 
+     1ie,ihon,i321)                                                     
+c  calculates goniometer settings for a given zone                      
+------------------------------------------------------------------
+  047        7386
+      integer function iint(a)                                          
+c floaing point to integer, correct rounding 
+------------------------------------------------------------------
+  048        7391
+      function cm14 (ihon,x)                                            
+c interprets beta tilt depending on goniometer type                     
+------------------------------------------------------------------
+  049        7399
+      function f360 (x)                                                 
+c angle x:  -180 =< x+180(!) =< +180                                    
+------------------------------------------------------------------
+  050        7407
+      subroutine iza (f,al1,be1,r1,al2,be2,r2,a1,b1,a2,b2,ihot,ie)      
+c  calculates alpha, beta as intersections of two or three circles      
+------------------------------------------------------------------
+  051        7447
+      subroutine xyr (x,y,r1,f,x0,y0,rr1)                               
+c calculates x0,y0,radius in cartesian coordinates                      
+------------------------------------------------------------------
+  052        7464
+      subroutine abtoxyr (a,b,x,y,f)                                    
+c alpha, beta --> x,y (rotation tilt)                                   
+------------------------------------------------------------------
+  053        7473
+      subroutine abtoxy (a,b,x,y,f)                                     
+c alpha, beta --> x,y (double tilt)                                     
+------------------------------------------------------------------
+  054        7514
+      subroutine xytoabr (a,b,x,y,f,al0)                                
+c x,y --> alpha,beta (rotation tilt)                                          
+------------------------------------------------------------------
+  055        7525
+      subroutine xytoab (a,b,x,y,f,be0)                                 
+c x,y --> alpha,beta (double tilt)                                   
+------------------------------------------------------------------
+  056        7555
+      subroutine sec (x01,y01,rr1,x02,y02,rr2,xx1,yy1,xx2,yy2,ie)       
+c common points of two circles                                          
+------------------------------------------------------------------
+  057        7597
+      subroutine idsy (ie,isys,in,io,ioa,ila,jsm)                       
+c  generates a cell of high symmetry from approxinate c.p.              
+------------------------------------------------------------------
+  058        7697
+      subroutine cvol (v,fk,ila)                                        
+c calculate volume from Laue zone radii                                 
+------------------------------------------------------------------
+  059        7713
+      subroutine czrh (ila,ke,cd,fakr,in,io,ioa,itri,limax)             
+c closest zone, new: rhombohedral case elaborated                        
+------------------------------------------------------------------
+  060        7763
+      subroutine cz (ila,ke,cd,f,wm,io,ioa,iw,limax,in)                 
+c find equivalent zone axes and compute angles with a given axis        
+------------------------------------------------------------------
+  061        7919
+      subroutine wii (x,z1,z2,z3,f,cd,wm)                               
+c angle from cartesian coordinates                                      
+------------------------------------------------------------------
+  062        7952
+      subroutine ss (ig,isr,pftst1,rs0,rs,ier,id33)                     
+c cell parameters from two patterns                                     
+------------------------------------------------------------------
+  063        8167
+      subroutine gon (holder,ibr,ihot,ihon,nx,ie)                       
+c controls and evaluates goniometer data                                
+------------------------------------------------------------------
+  064        8327
+      function zwi (c1,c2,c3,c4,iho,al0,be0)                            
+c  angle between zone axes from goniometer setting                      
+------------------------------------------------------------------
+  065        8346
+      subroutine upn (ibr,ier,fak,in,ioa)                               
+c pocket calculator                                                     
+------------------------------------------------------------------
+  066        8511
+      subroutine pri (ila,k,j)                                          
+c  transformation centered - primitive                                  
+------------------------------------------------------------------
+  067        8525
+      entry prir(ila,k,j)                                               
+c  tranformation primitive - centered                                   
+------------------------------------------------------------------
+  068        8535
+      subroutine cepr (cp,ila)                                          
+c  centered to primitive before Delaunay reduction                      
+------------------------------------------------------------------
+  069        8566
+      subroutine xzd (ih1,ik1,il1,jh)                                   
+c  determines zone defining reflections                                 
+------------------------------------------------------------------
+  070        8591
+      subroutine vp (j,j1,j2,j3,i,iz)                                   
+c  vector product, integers                                             
+------------------------------------------------------------------
+  071        8605
+      subroutine fvp (x,x1,x2,x3,x11,sw)                                
+c  vector product, floating point                                       
+------------------------------------------------------------------
+  072        8620
+      subroutine orth (rg,dg,cr,cd,v0,sg)                               
+c orthogonalization, matrix                                             
+------------------------------------------------------------------
+  073        8639
+      subroutine orth1 (dg,cd,v0)                                       
+c orthogonalization, matrix                                             
+------------------------------------------------------------------
+  074        8652
+      subroutine tr (x,xx,cd)                                           
+c orthogonalization, reciprocal space                                   
+------------------------------------------------------------------
+  075        8662
+      subroutine trd (x,xx,cd)                                          
+c orthogonalization, direct space                                       
+------------------------------------------------------------------
+  076        8672
+      subroutine xtodg (xx,dg)                                          
+c transf. cartesian coordinates > cell param.                           
+------------------------------------------------------------------
+  077        8687
+      subroutine prim (ila,ll,kk)                                       
+c  indices of primitive mesh                                            
+------------------------------------------------------------------
+  078        8736
+      integer function igt(i,j,k)                                       
+c  GGT of 3 integers                                                    
+------------------------------------------------------------------
+  079        8750
+      subroutine ggt1 (i11,i22,i2,ix2)                                  
+c  extended euclidean algorithm                                         
+------------------------------------------------------------------
+  080        8774
+      subroutine lind (i4,i5,i7)                                        
+c determines coefficients x,y: hkl = x*hkl1 + y*hkl2  (MU>1)            
+------------------------------------------------------------------
+  081        8791
+      subroutine uni (r1,r2,wi,r1n,r2n,win,r3n,fak,ie)                  
+c unique mesh                                                           
+------------------------------------------------------------------
+  082        8818
+      subroutine mini (k)                                               
+c  minimal. length of basic vectors                                     
+------------------------------------------------------------------
+  083        8840
+      subroutine mini1 (xx,i1,i2)                                       
+c  minimal. length of basic vectors                                     
+------------------------------------------------------------------
+  084        8851
+      subroutine minni (xx,j)                                           
+c reduced cell: minimalization of lengths                               
+------------------------------------------------------------------
+  085        8864
+      subroutine chec (ila,k,iz,ixj)                                    
+c  GGT of components of a vector                                        
+------------------------------------------------------------------
+  086        8875
+      subroutine ord (dg,i,j)                                           
+c interchanges cell param.                                              
+------------------------------------------------------------------
+  087        8887
+      subroutine vert (i4,i5)                                           
+c  sequence of vectors defining the primitive mesh                      
+------------------------------------------------------------------
+  088        8907
+      subroutine dire (dg,rg,rgw,fakr,v0,ier)                           
+c  rec. cell param. and volume from dir. cell param. and vice versa     
+------------------------------------------------------------------
+  089        8947
+      subroutine cksys (is,ac,iers,dw,dv)                               
+c check for correctness of the assumed crystal class                    
+------------------------------------------------------------------
+  090        8974
+      subroutine del1 (dg,dgw,v0,dgd,dgdw)                              
+c reduced cell                                                          
+------------------------------------------------------------------
+  091        9022
+      subroutine orden (dg,dgw,fakr)                                    
+c reduced cell: sequence of a, b, c                                     
+------------------------------------------------------------------
+  092        9043
+      subroutine ca (cr,cd,v0,in,io,ioa,fk,ila,jsm,iiv,ilo,r,rz0,rz1,   
+     1win,yzx,ydx,aq,ny1)                                               
+c metric calculations in reciprocal and direct space                    
+------------------------------------------------------------------
+  093        9490
+      subroutine ckex (ih,ila1,i,ie)                                    
+c check extinctions conditioned by centering                            
+------------------------------------------------------------------
+  094        9507
+      subroutine bone (jk,jd,iq)                                        
+c expresses h k l in terms of the coordinate system set up by CR        
+------------------------------------------------------------------
+  095        9538
+      subroutine dit (n,d,a)                                            
+c determinants to solve 3 equations with 3 unknowns                     
+------------------------------------------------------------------
+  096        9554
+      subroutine nnn (i1,i2,j2,j1)                                      
+c find j1,j2: i1*j1+i2*j2=+-1                                           
+------------------------------------------------------------------
+  097        9584
+      function alam (hv)                                                
+c wavelength from HV                                                    
+------------------------------------------------------------------
+  098        9590
+      subroutine test (r1,r2,r3,r4,wi,swi,dwi,fk,ie,in,io,ioa)          
+c  angle from both r1-r2 and r1+r2                                      
+------------------------------------------------------------------
+  099        9615
+      subroutine rhrh (dg,dgw,fak,sq3)                                  
+c zu Transformation rhomb. P -> trig. R                                 
+------------------------------------------------------------------
+  100        9628
+      function arco (w)                                                 
+c  abs(argument of acos) =< 1.                                          
+-----------------------------------------------------------------
+  101        9636
+      subroutine chgs (kk)                                              
+c  number of neg. signs =< number of pos. signs                         
+------------------------------------------------------------------
+  102        9655
+      logical function law(aw)                                          
+c interprets answer y/n                                                 
+------------------------------------------------------------------
+  103        9663
+      subroutine bra (in,io,ioa,ibr,j9,j8,if5)                          
+c command interpreter and help                                          
+------------------------------------------------------------------
+  104        9886
+      subroutine mvvm (cd,dg,dgw,fak,cvm,ivm)                           
+c  matrix-vector-operations                                             
+------------------------------------------------------------------
+  105       10149
+      subroutine wm (a,b,da,db)                                         
+c write the two matrices and determinants at the prompt                 
+------------------------------------------------------------------
+  106       10162
+      function det (a)                                                  
+c  determinante                                                         
+------------------------------------------------------------------
+  107       10170
+      subroutine m3inv (a,b,d,ie)                                       
+c inversion of a 3x3 matrix                                             
+------------------------------------------------------------------
+  108       10191
+      subroutine vv (aa,bb,cc)                                          
+c vector product                                                        
+------------------------------------------------------------------
+  109       10200
+      function vs (aa,bb)                                               
+c scalar product                                                        
+------------------------------------------------------------------
+  110       10207
+      subroutine vm (a,g,b)                                             
+c vektor*matrix                                                         
+------------------------------------------------------------------
+  111       10217
+      subroutine mv (g,a,b)                                             
+c matrix*vektor                                                         
+------------------------------------------------------------------
+  112       10227
+      subroutine mm (a,b,c,dc)                                          
+c matrix a * matrix b = matrix c                                        
+------------------------------------------------------------------

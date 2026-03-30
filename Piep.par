@@ -1,0 +1,260 @@
+sequ. of gonio. ang.: beta-alpha! accepts qwertz and qwerty                    1
+%%e7%2017--% 28-feb-2013     version identifier, must not be changed           2
+C  preceeding version:  %%e7%j% %% %  8-jan-2007                               3
+C  preceeding version:  %%e6%j% %% % 18-aug-2001                               4
+C                                                                              5
+C commands added: #128: 'cs', #129: 're', #130: 'sq', #131: 'rt'               6
+C                 #132: '.m', #133: 'la', #134: 'ai'                           7
+C variable added: dl0  (line 108)                                              8
+C                                                                              9
+C Line 1 contains an user defined identifier of the parameter file            10
+C The characters in col. 1-12 of line 2 are the identifier of the version.    11
+C After the first occurence of "$" in col.1 (here: line 29) five names        12
+C replacing the program internal default names of five files are expected     13
+C in the next five lines.                                                     14
+C Up to the comment introducing the definition of commands (line 163) all     15
+C lines except those containing relevant numeric values must contain any      16
+C letter in column 1.  No blank lines!                                        17
+C The sequence of the lines containing numeric information must not be        18
+C changed. After the character ';' comment may be included.                   19
+C                                                                             20
+C           ********************************                                  21
+C           * definition of default values *                                  22
+C           ********************************                                  23
+C                                                                             24
+C (The "default values of default values" ("def.") are used if the            25
+C  program runs without parameter file)                                       26
+C#01                                                                          27
+C five filenames                                                              28
+C --------------                                                              29
+$                   < filename up to col.20                                   30
+cell-2.dat          cell parameters (permanent),       #1    def.: CELL.DAT   31
+sad-2.dat           SAD data                           #2    def.: SAD_CRY.DAT32
+pro1.dat            protocol 1 (parallel output),      #3    def.: PRO1.DAT   33
+pro2.dat            protocol 2 (results of scans etc.),#4    def.: PRO2.DAT   34
+cell.sc             scratch file for cell parameters,  #5    def.: CELL.SC    35
+C  key-numbers  werden ueberschrieben, nur fuer Testversion relevant          36
+  1 1 1 0 0 0 0 0 0  0  0  0  0  0  0                                         37
+c 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15                                         38
+c n1>0: rapid start sequence, files #1 and #2 (lines 29-30) must be present   39
+c                                in the directory where the program resides   40
+c n2 : sequence for r-input: =0 :r, sig., mult. >0 :r, mult., sig.            41
+c n3 : if =1: decimal ',' permitted in addition to decimal '.'                42
+c n4 : if .eq. 0: Delaunay transf. with non-integer coeff. omitted            43
+c      n5ff:  performance figures                                             44
+c n5 : ittest                                                                 45
+c n6 :  Format for d-values in LA etc.: 0:f9.4, >0: 9.2                       46
+c n7 :  output of these control integers: 0:no, >0:yes                        47
+c n8 :                                                                        48
+c n9 :                                                                        49
+C======= floating point parameters =======                                    50
+C                                                                             51
+C  weights for the figure of merit (sum(weight*ABS(difference)))              52
+C --------------------------------------------------------------              53
+ .6 ; 0.5 ; def. 1.0,  weight of error in angle (deg.)                        54
+ .8 ; 1.0 ; def. 0.8,      -- ' --     in R1/R2(%)                            55
+ .3 ; 0.2 ; def. 0.3,      -- ' --     in camera constant(%)                  56
+C                                                                             57
+C#02                                                                          58
+C  sigmas                                                                     59
+C --------                                                                    60
+ 0.05 ; def. 0.05, sigma(camera constant) (relative)                          61
+ 0.03 ; def. 0.03,      (radii) (relative)                                    62
+ 2.5  ; def. 3.  ,      (angle) (deg.)                                        63
+C                                                                             64
+C#03                                                                          65
+C  high voltage                                                               66
+C -------------                                                               67
+  200000. ; def. 120000,  high voltage (volt)                                 68
+C                                                                             69
+C#04                                                                          70
+C  height/width of a character (for "graphic" representation of zones)        71
+C -------------------------------------------------------------------         72
+  2.2  ; def. 2., height/width for screen:                                    73
+C                min.: 0.3, max.: 4.                                          74
+C                VT100: 2.0, COMMODORE(EGA): 2.96(1.414),                     75
+C                HYUNDAI: 2.23,CTX:2.38                                       76
+  2.0 ; def. 1.67, same for printer ; Appel-LP: 2.0                           77
+C                                                                             78
+C#05                                                                          79
+C  X-ray wavelength for 2-theta values of powder lines                        80
+C ----------------------------------------------------                        81
+ 1.54056 ; def.: 1.54056                                                      82
+C                                                                             83
+C#06                                                                          84
+C increment factor f                                                          85
+ .025; def. 0.035 increment f                                                 86
+C ----------------------------------------------------------                  87
+C temporary errors in cell parameter determination routine                    88
+c .04 ; def. temporary error for camera constant (rel.)                        89
+c .02 ; def. temporary error for radii (rel.)                                  90
+c .8  ; def. temporary error for angle (deg.)                                  91
+C ----------------------------------------------------------                  80
+C temporary errors in cell parameter determination routine                    81
+ .015 ; def. temporary error for camera constant (rel.)                       82
+ .007 ; def. temporary error for radii (rel.)                                 83
+ 0.5  ; def. temporary error for angle (deg.)                                 84
+C ----------------------------------------------------------                  92
+C#07                                                                          93
+C  check of equivalence in cell parameter determination routine:              94
+C --------------------------------------------------------------              95
+  2.0; def. 2.0 deg.,  maximum difference in angle                            96
+  .05; def. 0.05 (rel.)      - " -           a/c, b/c                         97
+C                                                                             98
+C#08                                                                          99
+C  max. deviation of angle and ratio of axes from the value                  100
+C  prescribed by crystal class ( used in Delaunay reduction)                 101
+C ----------------------------------------------------------                 102
+      4. ; def.: 5.: angle (deg.)                                            103
+      0.1; def.: .1: ratio of axes                                           104
+C                                                                            105
+C#09                                                                         106
+C largest accepted deviation in volume (%)                                   107
+C ----------------------------------------                                   108
+      50. ; def. 50.                                                         109
+C                                                                            110
+C#10                                                                         111
+C  sigmas for Laue zone radii (absolute, mm)                                 112
+C -------------------------------------------                                113
+      5. ; def. 4.: radius 0. Laue zone                                      114
+     0.6 ; def. 1.: sigma tilt angle                                         115
+      5. ; def. 4.: difference: radius 1. - radius 0. Laue zone              116
+C                                                                            117
+C calibration for deflector coils (data for JEM3010, 3000mm cl.              118
+C ( = (r (calc. for the current camera const.))/(difference of read-outs     119
+C                                                                            120
+   .46312  ; x                                                               121
+   .41377  ; y                                                               122
+C same for hexadecimal input                                                 123
+   .00705   ; x                                                              124
+   .00630   ; y                                                              125
+C                                                                            126
+C                                                                            127
+C ====== integer parameters ======                                           128
+C                                                                            129
+C#11                                                                         130
+C type of holder: 1: double tilt, 2: rotation tilt, 3: CM12 double tilt      131
+C ------------------------------------------------                           132
+c   1  ; def. (CM20,  equiv. to " 3  1.  0.")                                133
+     1      ; be01 and be00 for CM20-holder                                  134
+C    3  3. -30. ; be01 and be00 for CM12-holder, beta=be01*val.+be00         135
+C                                                                            136
+C#12                                                                         137
+C maximum number of solutions to be output                                   138
+C ----------------------------------------                                   139
+     199 ; def. 199 (=max.)                                                  140
+C                                                                            141
+C#13                                                                         142
+C max. multiplicity of primitive mesh during cell parameter determination    143
+C -----------------------------------------------------------------------    144
+      2 ; def. 2                                                             145
+C                                                                            146
+C#14                                                                         147
+C approximate number of unsuccessful lattice constant generations            148
+C (in sequence) between two inquiries (memo for the author: if ISTP=1)       149
+   5000000 ; def. 10000                                                      150
+C                                                                            151
+C#15                                                                         152
+C screen: number of lines per screen                                         153
+C ----------------------------------                                         154
+    39 ;  def. 18                                                            155
+C                                                                            156
+C#16                                                                         157
+C lines/row for graphic representation of zones                              158
+C ---------------------------------------------                              159
+   14 ; min.: 7, max.: 20 (even numbers recommended)                         160
+C                                                                            161
+C#17                                                                         162
+C log10(maximum floating point size)                                         163
+C ----------------------------------                                         164
+    18 ; def. 27                                                             165
+C                                                                            166
+C#18                                                                         167
+C log10(maximum integer size)                                                168
+C ---------------------------                                                169
+     7 ; def. 7                                                              170
+C                                                                            171
+  If anywhere after this line the character % is encoutered in col. 1,       172
+  the user may define his own commands in the next 20 lines as shown         173
+  with the standard commands. Do not alter the format!                       174
+C#19                                                                         175
+%                                                                            176
+        DATA J8/'cp','wt','nr','cc','r1','r2','r3','an','en','i ','l ',      177
+     1'lg','ti','a ','b ','c ','al','be','ga','cn','po','ir','mu','rl',      178
+     1'ec','e1','e2','e3','ea','rw','sc','sf','ps','pg','pw','ln','h ',      179
+     1'hv','or','od','l0','l1','d0','d1','ly','vn','vy','ev','rd','np',      180
+     1's1','ag','ap','sa','aw','ad','rn','ry','cm','pc','dc','de','cw',      181
+     1'br','cg','eq','bp','bg','bd','cr','cd','ld','rf','ss','bs','za',      182
+     1'bw','xw','gs','gr','gc','nd','v ','ds','lw','. ','+ ','- ','* ',      183
+     1'/ ','**','< ','> ','<>','lx','mp','mg','si','co','tg','as','ac',      184
+     1'at','.1','.2','.3','.4','..','un','ro','yx','nl','c0','lo','e*',      185
+     1'sd','hh','ax','cz','is','te','je','nc','hd','jh','oz','ab','cs',      186
+     1're','sq','rt','.m','la','ai','mv','gu','du','du','du','du'/           187
+        DATA J9/'CP','WT','NR','CC','R1','R2','R3','AN','EN','I ','L ',      188
+     1'LG','TI','A ','B ','C ','AL','BE','GA','CN','PO','IR','MU','RL',      189
+     1'EC','E1','E2','E3','EA','RW','SC','SF','PS','PG','PW','LN','H ',      190
+     1'HV','OR','OD','L0','L1','D0','D1','LY','VN','VY','EV','RD','NP',      191
+     1'S1','AG','AP','SA','AW','AD','RN','RY','CM','PC','DC','DE','CW',      192
+     1'BR','CG','EQ','BP','BG','BD','CR','CD','LD','RF','SS','BS','ZA',      193
+     1'lb','XW','GS','GR','GC','ND','V ','DS','LW','. ','+ ','- ','* ',      194
+     1': ','**','sl','sr','21','LX','MP','MG','SI','CO','TG','AS','AC',      195
+     1'AT','.1','.2','.3','.4','..','UN','RO','YX','NL','C0','LO','E*',      196
+     1'SD','HH','AX','CZ','IS','TE','JE','NC','HD','JH','OZ','ba','CS',      197
+     1'RE','SQ','RT','.M','LA','AI','MV','GU','DU','DU','DU','DU'/           198
+C                                                                            199
+C J9: y and z interchanged                                                   200
+C                                                                            201
+ %                                                                           202
+        DATA J8/'cp','wt','nr','cc','r1','r2','r3','an','en','i ','l ',      203
+     1'lg','ti','a ','b ','c ','al','be','ga','cn','po','ir','mu','rl',      204
+     1'ec','e1','e2','e3','ea','rw','sc','sf','ps','pg','pw','ln','h ',      205
+     1'hv','or','od','l0','l1','d0','d1','ly','vn','vy','ev','rd','np',      206
+     1's1','ag','ap','sa','aw','ad','rn','ry','cm','pc','dc','de','cw',      207
+     1'br','cg','eq','bp','bg','bd','cr','cd','ld','rf','ss','bs','za',      208
+     1'bw','xw','gs','gr','gc','nd','v ','ds','lw','. ','+ ','- ','* ',      209
+     1'/ ','**','< ','> ','<>','lx','mp','mg','si','co','tg','as','ac',      210
+     1'at','.1','.2','.3','.4','..','un','ro','yx','nl','c0','lo','e*',      211
+     1'sd','hh','ax','cz','is','te','je','nc','hd','jh','oz','ab','cs',      212
+     1're','sq','rt','.m','la','ai','mv','go','du','du','du','du'/           213
+        DATA J9/'CP','WT','NR','CC','R1','R2','R3','AN','EN','I ','L ',      214
+     1'LG','TI','A ','B ','C ','AL','BE','GA','CN','PO','IR','MU','RL',      215
+     1'EC','E1','E2','E3','EA','RW','SC','SF','PS','PG','PW','LN','H ',      216
+     1'HV','OR','OD','L0','L1','D0','D1','lz','VN','vz','EV','RD','NP',      217
+     1'S1','AG','AP','SA','AW','AD','RN','rz','CM','PC','DC','DE','CW',      218
+     1'BR','CG','EQ','BP','BG','BD','CR','CD','LD','RF','SS','BS','ya',      219
+     1'BW','XW','GS','GR','GC','ND','V ','DS','LW','. ','] ','- ','} ',      220
+     1'& ','}}','\ ','| ','\|','LX','MP','MG','SI','CO','TG','AS','AC',      221
+     1'AT','.1','.2','.3','.4','..','UN','RO','zx','NL','C0','LO','e}',      222
+     1'SD','HH','AX','cy','IS','TE','JE','NC','HD','JH','oy','AB','CS',      223
+     1'RE','SQ','RT','.M','LA','AI','MV','gu','DU','DU','DU','DU'/           224
+C                                                                            225
+C 1st and 2nd interchanged                                                   226
+C                                                                            227
+ %                                                                           228
+        DATA J9/'CP','WT','NR','CC','R1','R2','R3','AN','EN','I ','L ',      229
+     1'LG','TI','A ','B ','C ','AL','BE','GA','CN','PO','IR','MU','RL',      230
+     1'EC','E1','E2','E3','EA','RW','SC','SF','PS','PG','PW','LN','H ',      231
+     1'HV','OR','OD','L0','L1','D0','D1','LY','VN','VY','EV','RD','NP',      232
+     1'S1','AG','AP','SA','AW','AD','RN','RY','CM','PC','DC','DE','CW',      233
+     1'BR','CG','EQ','BP','BG','BD','CR','CD','LD','RF','SS','BS','ZA',      234
+     1'BW','XW','GS','GR','GC','ND','V ','DS','LW','. ','+ ','- ','* ',      235
+     1': ','**','< ','> ','<>','LX','MP','MG','SI','CO','TG','AS','AC',      236
+     1'AT','.1','.2','.3','.4','..','UN','RO','YX','NL','C0','LO','E*',      237
+     1'SD','HH','AX','CZ','IS','TE','JE','NC','HD','JH','OZ','AB','CS',      238
+     1'RE','SQ','RT','.M','LA','AI','MV','gu','DU','DU','DU','DU'/           239
+        DATA J8/'cp','wt','nr','cc','r1','r2','r3','an','en','i ','l ',      240
+     1'lg','ti','a ','b ','c ','al','be','ga','cn','po','ir','mu','rl',      241
+     1'ec','e1','e2','e3','ea','rw','sc','sf','ps','pg','pw','ln','h ',      242
+     1'hv','or','od','l0','l1','d0','d1','ly','vn','vy','ev','rd','np',      243
+     1's1','ag','ap','sa','aw','ad','rn','ry','cm','pc','dc','de','cw',      244
+     1'br','cg','eq','bp','bg','bd','cr','cd','ld','rf','ss','bs','za',      245
+     1'bw','xw','gs','gr','gc','nd','v ','ds','lw','. ','+ ','- ','* ',      246
+     1'/ ','**','< ','> ','<>','lx','mp','mg','si','co','tg','as','ac',      247
+     1'at','.1','.2','.3','.4','..','un','ro','yx','nl','c0','lo','e*',      248
+     1'sd','hh','ax','cz','is','te','je','nc','hd','jh','oz','ab','cs',      249
+     1're','sq','rt','.m','la','ai','mv','go','du','du','du','du'/           250
+C                                                                            251
+c for test purposes only (irrelevant without password):                      252
+*                                                                            253
+  .55 .5 1 .03 10 1; FD, FW, itst(1), ftst(1), istt, itst(2)                 254
+ .5 ; FLIM                                                                   255
