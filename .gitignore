@@ -1,0 +1,81 @@
+# OS/editor noise
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+*.tmp
+*.bak
+*.orig
+*.rej
+.vscode/
+
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.pytest_tmp/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+ENV/
+
+# Temporary test and smoke-run output
+/test_runs/
+/.test_runs/
+/smoke_tmp/
+/pytest-cache-files-*/
+/out/
+
+# In-source CMake / Ninja / CTest noise
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+Testing/
+build.ninja
+.ninja_deps
+.ninja_log
+compile_commands.json
+Makefile
+
+# Generic compiled artifacts
+*.o
+*.obj
+*.a
+*.lib
+*.dll
+*.so
+*.dylib
+*.exp
+*.ilk
+*.pdb
+*.manifest
+*.class
+*.exe
+
+# Legacy transcript harness runtime files if somebody runs in-place
+cell.dat
+sad.dat
+pro1.dat
+pro2.dat
+cell.sc
+session.log
+input.script
+
+# Repo-local generated binaries to keep out of commits
+/piep
+/piep17z_build.exe
+/piep17z_gfortran_compat.exe
+
+# Keep the shipped legacy Windows executable used by the regression harness
+!/Piep-Z17.exe

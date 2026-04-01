@@ -1,0 +1,49 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "modern-gcc-debug",
+      "displayName": "Modern C++ GCC Debug",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_CXX_COMPILER": "g++",
+        "Python3_EXECUTABLE": "python",
+        "PIEP_BUILD_PYTHON": "ON"
+      }
+    },
+    {
+      "name": "modern-gcc-release",
+      "displayName": "Modern C++ GCC Release",
+      "inherits": "modern-gcc-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "build-modern-gcc-debug",
+      "configurePreset": "modern-gcc-debug"
+    },
+    {
+      "name": "build-modern-gcc-release",
+      "configurePreset": "modern-gcc-release"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "test-modern-gcc-debug",
+      "configurePreset": "modern-gcc-debug",
+      "output": {
+        "outputOnFailure": true
+      }
+    }
+  ]
+}
